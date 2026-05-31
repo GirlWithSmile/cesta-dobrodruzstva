@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cesta za dobrodružstvom ❤️</title>
+<style>
+body{margin:0;background:#141414;color:white;font-family:Arial,sans-serif;text-align:center}
+.page{display:none;padding:25px;max-width:900px;margin:auto}
+.active{display:block}
+.card{background:#222;padding:20px;border-radius:15px;margin-top:20px}
+button{padding:12px 20px;border:none;border-radius:10px;margin:10px;cursor:pointer;font-size:18px}
+.big{font-size:60px}
+</style>
+</head>
+<body>
+
+<div id="intro" class="page active">
+<h1>❤️ Cesta za dobrodružstvom ❤️</h1>
+<div class="card">
+<p>Ahoj Denisko...</p>
+<p>Jedného dňa som zobrala do ruky ceruzku a snažila sa zachytiť črty tvojej tváre. Nepoznali sme sa, no chcela som ti dať prvý úsmev mojou kresbou.</p>
+<p>Nechcela som začať obyčajným „Ahoj“.</p>
+<p>Chcela som začať trochu inak. A myslím si, že to si už na mne spoznal. ❤️</p>
+<p>Verím, že keď sa 24.6.2026 postavíme vedľa seba, budeš v tom momente veľmi šťastný, uvidíš svet mojimi očami a pocítiš tú energiu.</p>
+<p>A keď sa vrátiš domov, ľahneš si, usmeješ sa a pocítiš, že nech sa bude diať čokoľvek, budem tu.</p>
+<p><b>Ten víchor, ktorý ti jedného dňa nečakane vletel do života, nikam nezmizol. ❤️🌪️</b></p>
+</div>
+<button onclick="show('menu')">🏍️ Začať dobrodružstvo</button>
+</div>
+
+<div id="menu" class="page">
+<h2>Vyber si cestu</h2>
+<button onclick="show('moto')">🏍️ Motorkári a autá</button>
+<button onclick="show('game')">🎮 Pokušenie</button>
+<button onclick="show('tower')">🌅 Rozhľadňa</button>
+</div>
+
+<div id="moto" class="page">
+<h2>🏍️ Motorkári a autá</h2>
+<p>Na tejto ceste sa ukrýva jedna vzácna bytosť. Dokážeš ju nájsť?</p>
+<div class="big">🚗 🏍️ 🚗 🏍️ 🦟 🚗 🏍️</div>
+<button onclick="foundMosquito()">🦟 Klikni na komára</button>
+<div id="mosq"></div>
+</div>
+
+<div id="game" class="page">
+<h2>🎮 Pokušenie</h2>
+<p>Si pripravený vstúpiť do Pokušenia?</p>
+<button onclick="openCard()">❤️ Áno</button>
+<button onclick="openCard()">😊 Nie</button>
+<div id="secret"></div>
+</div>
+
+<div id="tower" class="page">
+<h2>🌅 Rozhľadňa na Malkovskej hôrke</h2>
+<div id="steps">
+<p>👣 Klikni na krok.</p>
+<button onclick="step()">👣 Urobiť krok</button>
+</div>
+</div>
+
+<div id="ending" class="page">
+<h2>💌 Posledné prekvapenie</h2>
+<div class="card">
+<p>💌 Posielam ti jednu veľkú pusu. 😘</p>
+<p>S láskou,<br><b>Nikolka ❤️</b></p>
+<hr>
+<p>Pamätáš si, keď si povedal, že som do tvojho života prišla ako víchor?</p>
+<p><b>Ten víchor, ktorý ti jedného dňa nečakane vletel do života, nikam nezmizol. ❤️</b></p>
+<p>Stále tu bude.</p>
+<p>Možno trochu bláznivý.</p>
+<p>Možno hlučný.</p>
+<p>Možno ti občas obráti svet hore nohami.</p>
+<p><b>Ale stále ten istý víchor. ❤️🌪️</b></p>
+<p>❤️ Ďakujem, že si prešiel moju Cestu za dobrodružstvom. ❤️</p>
+</div>
+</div>
+
+<script>
+let done={m:false,g:false,t:false};
+let s=0;
+
+function show(id){
+document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+}
+
+function checkEnd(){
+if(done.m&&done.g&&done.t){show('ending');}
+}
+
+function foundMosquito(){
+document.getElementById('mosq').innerHTML=`
+<div class="card">
+<p>🎉 Našiel si legendárneho komára.</p>
+<p>Nie motýle. Komáre. Tie, čo pichajú. 😄❤️</p>
+<p>💌 Dúfam, že moja pusa bude dostatočne silným liekom na bolesť tvojho bruška. 😘</p>
+<p>A ak nie, nasadíme druhú liečbu... môj smiech. 😊</p>
+<p>Ak budeš nervózny, budeme dvaja. 😊</p>
+<p>V tejto hre nemôžeš prehrať. A myslím si, že ani v našom prvom stretnutí. ❤️</p>
+<button onclick="done.m=true;show('menu');checkEnd()">Pokračovať</button>
+</div>`;
+}
+
+function openCard(){
+document.getElementById('secret').innerHTML=`
+<div class="card">
+<p>💌 Objavil si tajnú kartu.</p>
+<p>Nesľubujem ti na prvom rande sex.</p>
+<p>Taká nie som.</p>
+<p>No môžeme sa trošku zahrať. 😏</p>
+<p>Ale čo tým myslím... To si nechám pre seba. ❤️</p>
+<p>Ak by si šiel do Pokušenia, sprav screenshot tejto obrazovky.</p>
+<button onclick="yes()">📸 Mám screenshot</button>
+</div>`;
+}
+function yes(){
+document.getElementById('secret').innerHTML+=`<p><b>😊 Usmej sa. Bude sa ti to páčiť. ❤️</b></p><button onclick="done.g=true;show('menu');checkEnd()">Pokračovať</button>`;
+}
+
+function step(){
+s++;
+if(s<3){
+document.getElementById('steps').innerHTML=`<p>${"👣 ".repeat(s)}</p><button onclick="step()">Ďalší krok</button>`;
+}else{
+document.getElementById('steps').innerHTML=`
+<div class="card">
+<p style="font-size:60px">🌅</p>
+<p>Viem, že chceš na sebe popracovať, tak môžeme začať pomalými krokmi. K vyhliadkovej veži to síce nebude 200 m, ale určite ten výhľad a pocit, že si niečo spravil, budú viac, než si myslíš teraz. ❤️</p>
+<button onclick="done.t=true;show('menu');checkEnd()">Pokračovať</button>
+</div>`;
+}
+}
+</script>
+</body>
+</html>
